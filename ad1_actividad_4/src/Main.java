@@ -9,7 +9,7 @@ public class Main {
         palabra de la cadena en una línea distinta. */
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce una cadena palabras");
+        System.out.println("Introduce una frase");
         String texto = sc.nextLine();
         String[] palabras = texto.split(" ");
 
@@ -71,24 +71,32 @@ public class Main {
             char c = frase.charAt(i);
 
             switch (c){
-                case 'a':
-                    contadorA++;
-                    break;
-                case 'e':
-                    contadorE++;
-                    break;
-                case 'i':
-                    contadorI++;
-                    break;
-                case 'o':
-                    contadorO++;
-                    break;
-                case 'u':
-                    contadorU++;
-                    break;
+                case 'a' -> contadorA++;
+                case 'e' -> contadorE++;
+                case 'i' -> contadorI++;
+                case 'o' -> contadorO++;
+                case 'u' -> contadorU++;
             }
         }
 
-        
+        System.out.println("El numero de a: " + contadorA);
+        System.out.println("El numero de e: " + contadorE);
+        System.out.println("El numero de i: " + contadorI);
+        System.out.println("El numero de o: " + contadorO);
+        System.out.println("El numero de u: " + contadorU);
+
+
+        /* Realiza un programa que lea una frase por teclado e indique si la frase es un palíndromo
+        o no (ignorando espacios y sin diferenciar entre mayúsculas y minúsculas).
+        Supondremos que el usuario solo introducirá letras y espacios (ni comas, ni puntos, ni
+        acentos, etc.). Un palíndromo es un texto que se lee igual de izquierda a derecha que de
+        derecha a izquierda. */
+
+        Scanner sc5 = new Scanner(System.in);
+        System.out.println("Introduce una frace: ");
+        String frase1 = sc.nextLine().toLowerCase().replace(" ", "  ");
+
+        for (int i = 0; i < frase1.length(); i++) {
+        }
     }//CLASE
 }//MAIN
