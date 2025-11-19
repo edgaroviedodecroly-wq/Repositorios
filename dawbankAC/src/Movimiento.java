@@ -1,11 +1,11 @@
-public class Movimientos {
+public class Movimiento {
     private int id;
     private String fecha;
     private String tipo;
     private double cantidad;
 
     //Contrutores
-    public Movimientos(int id, String fecha, String tipo, double cantidad) {
+    public Movimiento (int id, String fecha, String tipo, double cantidad) {
         this.id = id;
         this.fecha = fecha;
         this.tipo = tipo;
@@ -16,10 +16,10 @@ public class Movimientos {
 
     public String mostrarInfoMovimiento(){
      String mostrarInfoMovimiento = "";
-     mostrarInfoMovimiento = "Id: " + this.id + "\n";
-     mostrarInfoMovimiento = "Fecha: " + this.fecha + "\n";
-     mostrarInfoMovimiento = "Tipo: " + this.tipo + "\n";
-     mostrarInfoMovimiento = "Cantidad: " + this.cantidad + "\n";
+     mostrarInfoMovimiento += "Id: " + this.id + "\n";
+     mostrarInfoMovimiento += "Fecha: " + this.fecha + "\n";
+     mostrarInfoMovimiento += "Tipo: " + this.tipo + "\n";
+     mostrarInfoMovimiento += "Cantidad: " + this.cantidad + "\n";
 
      return mostrarInfoMovimiento;
     }

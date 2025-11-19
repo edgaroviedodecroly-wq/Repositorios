@@ -2,16 +2,17 @@ public class CuentaBancaria {
     private String iban;
     private String titular;
     private double saldo;
-    private Movimientos[] movimientos;
+    private Movimiento[] movimientos;
     private int numMovimientos;
 
     private static final double LIMITE_DESCUBIERTO = -50.0;
-    public CuentaBancaria(String iban, String titular, double saldo, Movimientos[] movimientos, int numMovimientos) {
+
+    public CuentaBancaria(String iban, String titular){
         this.iban = iban;
         this.titular = titular;
-        this.saldo = saldo;
-        this.movimientos = new Movimientos[100];
-        this.numMovimientos = numMovimientos;
+        this.saldo = 0;
+        this.movimientos = new Movimiento[100];
+        this.numMovimientos = 0;
 
 
     }
@@ -20,17 +21,11 @@ public class CuentaBancaria {
         return iban;
     }
 
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
 
     public String getTitular() {
         return titular;
     }
 
-    public void setTitular(String titular) {
-        this.titular = titular;
-    }
 
     public double getSaldo() {
         return saldo;
@@ -40,11 +35,11 @@ public class CuentaBancaria {
         this.saldo = saldo;
     }
 
-    public Movimientos[] getMovimientos() {
+    public Movimiento[] getMovimientos() {
         return movimientos;
     }
 
-    public void setMovimientos(Movimientos[] movimientos) {
+    public void setMovimientos(Movimiento[] movimientos) {
         this.movimientos = movimientos;
     }
 
@@ -57,7 +52,7 @@ public class CuentaBancaria {
     }
 
 
-    public boolean ingreso(double cantidad, String fecha, String tipo) {
+    public boolean ingreso(double cantidad, String fecha) {
 
         if (cantidad <= 0){
             System.out.println("Cantidad Invalida");
@@ -69,7 +64,7 @@ public class CuentaBancaria {
             System.out.println("AVISO: Notificar Hacienda.");
         }
 
-        Movimientos mov = new Movimientos(numMovimientos + 1,  fecha,  "ingreso", cantidad);
+        Movimiento mov = new Movimiento(numMovimientos + 1, fecha, "Ingreso", cantidad);
 
         movimientos[numMovimientos] = mov;
         numMovimientos++;
@@ -77,7 +72,7 @@ public class CuentaBancaria {
         return true;
     }
 
-    public boolean retirada(double cantidad, String fecha, String tipo) {
+    public boolean retirada(double cantidad, String fecha) {
 
         if (cantidad <= 0) {
             System.out.println("Cantidad Invalida");
@@ -92,15 +87,27 @@ public class CuentaBancaria {
             System.out.println("Saldo Negativo");
         }
 
+        if  (cantidad > 3000) {
+            System.out.println("AVISO: Notificar Hacienda.");
+        }
+
+        Movimiento mov = new Movimiento(numMovimientos + 1,  fecha,  "retirada", cantidad);
+        movimientos[numMovimientos] = mov;
+        numMovimientos++;
+
         return false;
     }
 
     public String mostrarDatos(){
-        String mostarDatos = "";
-        mostarDatos = "Iban: " + this.iban + "\n";
-        mostarDatos = "Titular: " + this.titular + "\n";
-        mostarDatos = "Saldo: " + this.saldo + "\n";;
+        String datos = "";
+        datos += "Iban: " + this.iban + "\n";
+        datos += "Titular: " + this.titular + "\n";
+        datos += "Saldo: " + this.saldo + "\n";;
 
-        return mostarDatos;
+        return datos;
+    }
+
+    public int NumMovimientos() {
+        return numMovimientos;
     }
 }
