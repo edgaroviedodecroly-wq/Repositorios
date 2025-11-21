@@ -1,14 +1,41 @@
+import java.time.LocalDate;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Inicio mi programa y dos variables String
         Scanner sc = new Scanner(System.in);
-        System.out.print("Ingrese Iban: ");
-        String iban = sc.nextLine();
-        System.out.print("Ingrese Titular: ");
-        String titular = sc.nextLine();
+        System.out.print("Bienvenido a DawBank" + "\n");
+        String iban = "";
+        String titular = "";
+
+        // Pido los datos y los paso por dos filtros, para evitar mala praxis.
+
+        while(true) {
+            System.out.println("Introduzca Iban: ");
+            iban = sc.nextLine().toUpperCase();
+
+            if (iban.matches("^[A-Z]{2}[0-9]{22}$")) {
+                break;
+        }else {
+                System.out.println("ERROR: Introduce un IBAN correcto.");
+            }
+        }
+
+        while(titular.isEmpty()) {
+            System.out.println("Introduce nombre del titular: ");
+            titular = sc.nextLine().toUpperCase();
+            if (titular.isEmpty()) {
+                System.out.println("ERROR: El campo de titular tiene que estar completado.");
+            }
+        }
+
+        // Creo cuenta para cuando alguien se registre con iban y titular
 
         CuentaBancaria cuenta = new CuentaBancaria(iban, titular);
+
+        // Creo el do-while con los  prints, seguido de los case.
 
         int opcion;
 
@@ -42,10 +69,8 @@ public class Main {
                     System.out.println("Introduce la cantidad a ingresar: ");
                     double cantidad = sc.nextDouble();
                     sc.nextLine();
-                    System.out.print("Ingrese fecha de ingreso: ");
-                    String fecha = sc.nextLine();
 
-                    if (cuenta.ingreso(cantidad, fecha)) {
+                    if (cuenta.ingreso(cantidad)) {
                         System.out.println("Ingreso realizado correctamente");
                     } else {
                         System.out.println("Ingreso realizado incorrectamente");
@@ -56,10 +81,7 @@ public class Main {
                     double cantidadRetirada = sc.nextDouble();
                     sc.nextLine();
 
-                    System.out.print("Ingrese fecha del retiro: ");
-                    String fechaRetirada = sc.nextLine();
-
-                    if (cuenta.retirada(cantidadRetirada, fechaRetirada)) {
+                    if (cuenta.retirada(cantidadRetirada)) {
                         System.out.println("Retiro realizado correctamente");
                     } else {
                         System.out.println("El retiro no se realizo correctamente");
