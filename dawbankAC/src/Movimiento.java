@@ -9,7 +9,6 @@ public class Movimiento {
 
     // COSTRUCTORES
 
-
     public Movimiento (int id, String tipo, double cantidad) {
 
         // Importo LocalDate y creo FechaActual igualandola a su metodo para que me de la fecha actual siempre.
