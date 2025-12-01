@@ -33,9 +33,6 @@ public class CuentaBancaria {
         return movimientos;
     }
 
-    public int getNumMovimientos() {
-        return numMovimientos;
-    }
 
     // Metodo para ingresos, hago un if para validar la cantidad minima y otro para la maxima.
 

@@ -10,10 +10,11 @@ public class VideoDaw {
 
     //CONSTRUCTORES
 
-    private VideoDaw (String CIF, String Direccion){
+    VideoDaw(String CIF, String Direccion, LocalDate FechaAlta){
         this.CIF = CIF;
         this.Direccion = Direccion;
         this.FechaAlta = FechaAlta;
+
     }
 
     //METODOS
@@ -21,11 +22,11 @@ public class VideoDaw {
         return mostrarPeliculasRegistradas();
     }
 
-    private String mostrarInfoVideoClub() {
+    String mostrarInfoVideoClub() {
         String mostrarInfoVideoClub = "";
-        mostrarInfoVideoClub = "CIF: " + this.CIF + "\n";
-        mostrarInfoVideoClub = "Direccion: " + this.Direccion + "\n";
-        mostrarInfoVideoClub = "Fecha Alta: " + this.FechaAlta + "\n";
+        mostrarInfoVideoClub += "CIF: " + this.CIF + "\n";
+        mostrarInfoVideoClub += "Direccion: " + this.Direccion + "\n";
+        mostrarInfoVideoClub += "Fecha Alta: " + this.FechaAlta + "\n";
         return mostrarInfoVideoClub;
     }
 
