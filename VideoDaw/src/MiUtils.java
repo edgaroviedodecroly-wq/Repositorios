@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,4 +48,8 @@ import java.util.regex.Pattern;
             } while (!isOk);
             return texto;
         }
+
+//        public static LocalDate leerFecha(String mensaje) {
+//
+//    }
     }

@@ -15,9 +15,9 @@ public class Main {
         final DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         String CIF = MiUtils.comprobarPatronRepetidamente(CIFpanttern, "Introduce un CIF: ");
-        String Direccion = MiUtils.comprobarPatronRepetidamente(DireccionPattern, "Introduce una direccion:");
+        String DireccionClub = MiUtils.comprobarPatronRepetidamente(DireccionPattern, "Introduce una direccion:");
 
-        VideoDaw videoClub = new VideoDaw(CIF, Direccion, FechaAlta);
+        VideoDaw videoClub = new VideoDaw(CIF, DireccionClub, FechaAlta);
 
         String opcion = "";
 
@@ -48,8 +48,24 @@ public class Main {
                     String cod = MiUtils.comprobarPatronRepetidamente(codPattern, "Introduce Cod: identificador único de la Película: ");
                     String titulo = MiUtils.comprobarPatronRepetidamente(tituloPatttern, "Introduce titulo de la pelicula: ");
 
+                    Pelicula pelicula = new Pelicula(cod, titulo,);
+
                     break;
                 case "3":
+                    Scanner sc3 = new Scanner(System.in);
+                    final String dniPattern = "[0-9]{8}[A-Za-z]";
+                    final String nombrePattern = "[A-Za-zÁÉÍÓÚáéíóúÑñ ]+";
+                    final String numeroSocioPattern = "[0-9]{6}";
+                    final String direccionPattern = "[a-zA-Z0-9 ,.]+";
+                    final String fechaNacimientoPattern = "\\d{4}[/-]\\d{2}[/-]\\d{2}";
+
+                    String DNI = MiUtils.comprobarPatronRepetidamente(dniPattern, "Introduce numero de DNI: ");
+                    String Nombre = MiUtils.comprobarPatronRepetidamente(nombrePattern, "Introduce un Nombre: ");
+                    String NumSocio = MiUtils.comprobarPatronRepetidamente(numeroSocioPattern, "Introduce un numero de socio: ");
+                    String Direccion = MiUtils.comprobarPatronRepetidamente(direccionPattern, "Introduce la direccion del cliente: ");
+                    String fechaNacimiento = MiUtils.comprobarPatronRepetidamente(fechaNacimientoPattern, "Introduce fecha de nacimiento yyyy/MM/dd: ");
+
+                    Cliente socio = new Cliente(DNI, Nombre, NumSocio, Direccion, fechaNacimiento);
                     break;
                 case "4":
                     break;

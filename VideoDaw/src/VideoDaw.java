@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 public class VideoDaw {
     private String CIF;
-    private String Direccion;
+    private String DireccionClub;
     private LocalDate FechaAlta;
     private Pelicula[] PeliculasRegistradas;
     private int numPeliculasRegistradas;
@@ -12,7 +12,7 @@ public class VideoDaw {
 
     VideoDaw(String CIF, String Direccion, LocalDate FechaAlta){
         this.CIF = CIF;
-        this.Direccion = Direccion;
+        this.DireccionClub = Direccion;
         this.FechaAlta = FechaAlta;
 
     }
@@ -25,7 +25,7 @@ public class VideoDaw {
     String mostrarInfoVideoClub() {
         String mostrarInfoVideoClub = "";
         mostrarInfoVideoClub += "CIF: " + this.CIF + "\n";
-        mostrarInfoVideoClub += "Direccion: " + this.Direccion + "\n";
+        mostrarInfoVideoClub += "Direccion: " + this.DireccionClub + "\n";
         mostrarInfoVideoClub += "Fecha Alta: " + this.FechaAlta + "\n";
         return mostrarInfoVideoClub;
     }
