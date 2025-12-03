@@ -22,13 +22,24 @@ public class VideoDaw {
         return mostrarPeliculasRegistradas();
     }
 
-    String mostrarInfoVideoClub() {
+    public void peliculasRegistradas(Pelicula peliculaARegistrar) {
+        for (int i = 0; i < PeliculasRegistradas.length; i++) {
+            if (PeliculasRegistradas[i] == null) {
+                PeliculasRegistradas[i] = peliculaARegistrar;
+                break;
+            }
+        };
+    };
+
+    public String mostrarInfoVideoClub() {
         String mostrarInfoVideoClub = "";
         mostrarInfoVideoClub += "CIF: " + this.CIF + "\n";
         mostrarInfoVideoClub += "Direccion: " + this.DireccionClub + "\n";
         mostrarInfoVideoClub += "Fecha Alta: " + this.FechaAlta + "\n";
         return mostrarInfoVideoClub;
     }
+
+
 
 
 }

@@ -4,26 +4,29 @@ import java.time.LocalDateTime;
 public class Pelicula {
     private String cod;
     private String titulo;
-    private enum genero{}
-    private LocalDate fechaRegistro;
+    private Genero genero;
+    private LocalDate fechaRegistro = LocalDate.now();
     private LocalDateTime fechaAlquiler;
-    private boolean alquilada;
+    private boolean alquilada = false;
+
 
 
     //Constructores
-    public Pelicula (String cod, String titulo, boolean alquilada) {
+    public Pelicula (String cod, String titulo, Genero genero) {
         this.cod = cod;
         this.titulo = titulo;
-        this.alquilada = alquilada;
+        this.genero = genero;
     }
 
-    // METODOS
+
+// METODOS
 
     public String mostrarInfoPelicula() {
         String mostrarInfoPelicula = "";
         mostrarInfoPelicula += "Cod: " + this.cod + "\n";
         mostrarInfoPelicula += "Titulo: " + this.titulo + "\n";
         mostrarInfoPelicula += "Alquilada: " + this.alquilada + "\n";
+        mostrarInfoPelicula += "Genero: " + this.genero + "\n";
 
         return mostrarInfoPelicula;
     }

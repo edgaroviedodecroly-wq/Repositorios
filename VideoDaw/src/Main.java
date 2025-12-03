@@ -44,12 +44,18 @@ public class Main {
                     Scanner sc2 = new Scanner(System.in);
                     final String codPattern = "P-[0-9]{4}";
                     final String tituloPatttern = "[a-zA-Z0-9 ]{1,50}";
-                    
+                    final String generoPattern = "[1-"+Genero.values().length+"]{1}";
+
+
                     String cod = MiUtils.comprobarPatronRepetidamente(codPattern, "Introduce Cod: identificador único de la Película: ");
                     String titulo = MiUtils.comprobarPatronRepetidamente(tituloPatttern, "Introduce titulo de la pelicula: ");
 
-                    Pelicula pelicula = new Pelicula(cod, titulo,);
+                    Genero.getMostrarGeneros();
+                    String generoPrueba = MiUtils.comprobarPatronRepetidamente(generoPattern, "Introduce el genero de la pelicual");
+                    Genero generoElegido = Genero.values()[Integer.valueOf(generoPrueba)-1];
 
+                    Pelicula pelicula = new Pelicula(cod, titulo, generoElegido);
+                    videoClub.peliculasRegistradas(pelicula);
                     break;
                 case "3":
                     Scanner sc3 = new Scanner(System.in);
