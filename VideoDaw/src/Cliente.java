@@ -23,6 +23,11 @@ public class Cliente {
         this.numPeliculasAlquiladas = 0;
     }
 
+    public boolean InsertarPelicula(Pelicula cod) {
+        if (cod == null) return false;
+        return false;
+    }
+
     String mostrarInfoCliente() {
         String mostrarInfoCliente ="";
          mostrarInfoCliente += "DNI: " + this.DNI + "\n";

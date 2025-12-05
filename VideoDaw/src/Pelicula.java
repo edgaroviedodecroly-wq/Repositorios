@@ -18,6 +18,29 @@ public class Pelicula {
         this.genero = genero;
     }
 
+    public boolean isAlquilada() {
+        return alquilada;
+    }
+
+    public void setAlquilada(boolean alquilada) {
+        this.alquilada = alquilada;
+    }
+
+    public LocalDateTime getFechaAlquiler() {
+        return fechaAlquiler;
+    }
+
+    public void setFechaAlquiler(LocalDateTime FechaAlquiler) {
+        this.fechaAlquiler = fechaAlquiler;
+    }
+
+    public LocalDate getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(LocalDate fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
 
 // METODOS
 
@@ -31,6 +54,10 @@ public class Pelicula {
         return mostrarInfoPelicula;
     }
 
+    public boolean InsertarPelicula(Pelicula cod) {
+        if (cod == null)return false;
+        return false;
+    }
 }
 
 

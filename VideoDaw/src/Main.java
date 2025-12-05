@@ -56,6 +56,8 @@ public class Main {
 
                     Pelicula pelicula = new Pelicula(cod, titulo, generoElegido);
                     videoClub.peliculasRegistradas(pelicula);
+                    System.out.println(pelicula.mostrarInfoPelicula());
+
                     break;
                 case "3":
                     Scanner sc3 = new Scanner(System.in);
@@ -74,6 +76,15 @@ public class Main {
                     Cliente socio = new Cliente(DNI, Nombre, NumSocio, Direccion, fechaNacimiento);
                     break;
                 case "4":
+                    Scanner sc4 = new Scanner(System.in);
+
+                    final String cod2Pattern = "P-[0-9]{4}";
+                    final String dni2Pattern = "[0-9]{8}[A-Za-z]";
+                    cod = MiUtils.comprobarPatronRepetidamente(cod2Pattern, "Introduce el codigo de la pelicula a alquilar: ");
+                    DNI = MiUtils.comprobarPatronRepetidamente(dni2Pattern, "Introduce numero de DNI: ");
+                    if (cod != null && DNI != null) {
+
+                    }
                     break;
                 case "5":
                     break;

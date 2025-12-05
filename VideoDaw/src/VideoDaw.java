@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class VideoDaw {
     private String CIF;
@@ -23,6 +24,7 @@ public class VideoDaw {
     }
 
     public void peliculasRegistradas(Pelicula peliculaARegistrar) {
+        PeliculasRegistradas = new Pelicula[100];
         for (int i = 0; i < PeliculasRegistradas.length; i++) {
             if (PeliculasRegistradas[i] == null) {
                 PeliculasRegistradas[i] = peliculaARegistrar;
@@ -31,6 +33,19 @@ public class VideoDaw {
         };
     };
 
+    public boolean alquilarPelicula(Pelicula cod, Pelicula DNI) {
+        if (cod == null && DNI == null) return false;
+        if (cod.isAlquilada()) {
+            System.out.println("ERROR: La pelicula ya esta alquilada.");
+            return false;
+        }
+
+        cod.setAlquilada(true);
+        cod.setFechaAlquiler(LocalDateTime.now());
+        DNI.InsertarPelicula(cod);
+        return false;
+    }
+
     public String mostrarInfoVideoClub() {
         String mostrarInfoVideoClub = "";
         mostrarInfoVideoClub += "CIF: " + this.CIF + "\n";
@@ -38,6 +53,8 @@ public class VideoDaw {
         mostrarInfoVideoClub += "Fecha Alta: " + this.FechaAlta + "\n";
         return mostrarInfoVideoClub;
     }
+
+
 
 
 
