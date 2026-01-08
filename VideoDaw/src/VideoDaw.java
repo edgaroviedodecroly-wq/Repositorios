@@ -6,20 +6,23 @@ public class VideoDaw {
     private String DireccionClub;
     private LocalDate FechaAlta;
     private Pelicula[] PeliculasRegistradas;
-    private int numPeliculasRegistradas;
     private Cliente[] numClientesRegistrados;
+
+    private int contadorPeliculas = 0;
+    private int contadorClientes = 0;
 
     //CONSTRUCTORES
 
-    VideoDaw(String CIF, String Direccion, LocalDate FechaAlta){
+    VideoDaw(String CIF, String Direccion){
         this.CIF = CIF;
         this.DireccionClub = Direccion;
-        this.FechaAlta = FechaAlta;
+        this.FechaAlta = LocalDate.now();
 
     }
 
     //METODOS
-    private String mostrarPeliculasRegistradas() {
+    public static String mostrarPeliculasRegistradas() {
+
         return mostrarPeliculasRegistradas();
     }
 
@@ -54,9 +57,22 @@ public class VideoDaw {
         return mostrarInfoVideoClub;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("VideoDaw{");
+        sb.append("CIF='").append(CIF).append('\'');
+        sb.append(", DireccionClub='").append(DireccionClub).append('\'');
+        sb.append(", FechaAlta=").append(FechaAlta);
+        sb.append('}');
+        return sb.toString();
+    }
 
 
-
-
-
+    public String mostrarClientesRegistrados() {
+        String info = mostrarClientesRegistrados();
+        for (int i = 0; i < this.contadorClientes; i++) {
+            info += this.numClientesRegistrados[i].toString() + "\n";
+        }
+        return info;
+    }
 }

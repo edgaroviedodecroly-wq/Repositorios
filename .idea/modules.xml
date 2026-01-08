@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AC_PiedraPapelTijera/AC_PiedraPapelTijera.iml" filepath="$PROJECT_DIR$/AC_PiedraPapelTijera/AC_PiedraPapelTijera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Repositorios.iml" filepath="$PROJECT_DIR$/.idea/Repositorios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UF2_actividad_6/UF2_actividad_6.iml" filepath="$PROJECT_DIR$/UF2_actividad_6/UF2_actividad_6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VideoDaw/VideoDaw.iml" filepath="$PROJECT_DIR$/VideoDaw/VideoDaw.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ad1_actividad_1/ad1_actividad_1.iml" filepath="$PROJECT_DIR$/ad1_actividad_1/ad1_actividad_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ad1_actividad_2/ad1_actividad_2.iml" filepath="$PROJECT_DIR$/ad1_actividad_2/ad1_actividad_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ad1_actividad_3/ad1_actividad_3.iml" filepath="$PROJECT_DIR$/ad1_actividad_3/ad1_actividad_3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ad1_actividad_4/ad1_actividad_4.iml" filepath="$PROJECT_DIR$/ad1_actividad_4/ad1_actividad_4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dawbankAC/dawbankAC.iml" filepath="$PROJECT_DIR$/dawbankAC/dawbankAC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/herencia/herencia.iml" filepath="$PROJECT_DIR$/herencia/herencia.iml" />
+    </modules>
+  </component>
+</project>

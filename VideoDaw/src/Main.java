@@ -11,13 +11,12 @@ public class Main {
         System.out.println("Bienvenido a LibreCoders registra tu VideoClub");
         String CIFpanttern = "[A-B]{1}[0-9]{9}";
         final String DireccionPattern = "[a-zA-Z0-9 ,.]+";
-        final LocalDate FechaAlta = LocalDate.now();
         final DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         String CIF = MiUtils.comprobarPatronRepetidamente(CIFpanttern, "Introduce un CIF: ");
         String DireccionClub = MiUtils.comprobarPatronRepetidamente(DireccionPattern, "Introduce una direccion:");
 
-        VideoDaw videoClub = new VideoDaw(CIF, DireccionClub, FechaAlta);
+        VideoDaw videoClub = new VideoDaw(CIF, DireccionClub);
 
         String opcion = "";
 
@@ -85,6 +84,7 @@ public class Main {
                     if (cod != null && DNI != null) {
 
                     }
+//                    System.out.println(VideoDaw.mostrarPeliculasRegistradas());
                     break;
                 case "5":
                     break;
