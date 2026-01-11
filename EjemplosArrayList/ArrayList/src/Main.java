@@ -4,13 +4,15 @@ import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
+
     public static void main(String[] args) {
 
 //        1. Crea 5 instancias de la Clase Producto.
 //        2. Crea un ArrayList.
 
-        ArrayList<String> productos = new ArrayList<String>(10);
+        List<String> productos = new ArrayList<String>(10);
 
 //        3. Añade las 5 instancias de Producto al ArrayList.
 
@@ -66,7 +68,11 @@ public class Main {
 //        8. Ordena la lista por el nombre del producto (hay que usar el metodo sort y el
 //        compateTo)
 
-        
+        listaProductos.sort(Comparator.comparing(Producto::getNombre));
+
+        for (Producto producto : listaProductos) {
+            System.out.println(producto);
+        }
 
 
 
