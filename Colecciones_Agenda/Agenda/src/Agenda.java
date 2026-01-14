@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Agenda {
@@ -13,12 +14,13 @@ public class Agenda {
         String nombre = "";
         String telefono = "";
         String correo = "";
+
         
         while (true){
         System.out.println("Introduce el nombre del contacto: ");
         nombre = sc.nextLine();
 
-        if (!nombre.matches("[a-zA-Z0-9 ]{1,50}")) {
+        if (!nombre.matches("[a-zA-Z0-9]{1,}")) {
             System.out.println("Introduce un nombre de contacto valido:");
         } else if (contacto.containsKey(nombre)) {
             System.out.println("El contacto ya existe");
@@ -51,10 +53,11 @@ public class Agenda {
             } else  {
                 break;
             }
-
-            Contacto c = new Contacto(nombre, telefono, correo);
-            contacto.put(nombre, c);
         }
+        
+        Contacto c = new Contacto(nombre, telefono, correo);
+        contacto.put(nombre, c);
+
     }
 
     public void eliminarContacto() {
@@ -77,13 +80,24 @@ public class Agenda {
 
         boolean existe = false;
         for (Contacto c : contacto.values()) {
-            if (c.getNombre().equals(nombre)) {
+            if (c.getNombre().equalsIgnoreCase(nombre)) {
                 System.out.println(c);
+                existe = true;
+                break;
             }
         }
 
         if (!existe) {
             System.out.println("Contacto no encontrado");
+        }
+    }
+
+    public void verContactos() {
+        for (Map.Entry<String, Contacto> entrada : contacto.entrySet()) {
+            String nombre = entrada.getKey();
+            Contacto contacto = entrada.getValue();
+            System.out.println(entrada.getKey() + ": " + contacto);
+
         }
     }
 }

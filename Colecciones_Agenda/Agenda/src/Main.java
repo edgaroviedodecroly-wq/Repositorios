@@ -1,20 +1,12 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 void main() {
     Scanner sc = new Scanner(System.in);
     Agenda agenda = new Agenda();
     String opcion = "";
     do{
 
-        System.out.println("\nTaller");
-        System.out.println("1. Añadir contacto a la agenda.");
-        System.out.println("2. Eliminar contacto de agenda.");
-        System.out.println("3. buscar contacto en la agenda.");
-        System.out.println("4. Ver coches del taller.");
-        System.out.println("5. Salir del taller.");
-
-        sc = new Scanner(System.in);
-        opcion = sc.nextLine();
+        opcion = menu();
 
         switch (opcion) {
             case "1":
@@ -27,8 +19,10 @@ void main() {
                 agenda.buscarContacto();
                 break;
             case "4":
+                agenda.verContactos();
                 break;
             case "5":
+                System.out.println("Saliendo de la agenda...");
                 break;
             default:
                 System.out.println("Por favor introduzca una opcion correcta.");
@@ -36,4 +30,19 @@ void main() {
 
     }while(!opcion.equals("5"));
 
+}
+
+private static String menu() {
+    String opcion;
+    Scanner sc;
+    System.out.println("\nAgenda");
+    System.out.println("1. Añadir contacto a la agenda.");
+    System.out.println("2. Eliminar contacto de agenda.");
+    System.out.println("3. buscar contacto en la agenda.");
+    System.out.println("4. Ver contactos de la agenda.");
+    System.out.println("5. Salir de la agenda.");
+
+    sc = new Scanner(System.in);
+    opcion = sc.nextLine();
+    return opcion;
 }
