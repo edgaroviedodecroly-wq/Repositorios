@@ -54,6 +54,22 @@ public class Main {
                     System.out.println("\n" + "Elimine elemento y recorro list para verificar: " + "\n");
                     for (Producto producto : listaProductos) {
                         System.out.println(producto);
+
+                    }
+
+//                    Opcion que vale para todos eliminar en listas y maps
+
+                    System.out.println("\n" );
+                    Producto pAux = null;
+                    for (Producto producto : listaProductos) {
+                        if(producto.getNombre().equals(producto.getNombre())) {
+                        pAux = producto;
+                        break;
+                    }
+
+
+                    if (pAux != null) {
+                        listaProductos.remove(pAux);
                     }
 
 //           6. Inserta un nuevo objeto producto en medio de la lista.

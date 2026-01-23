@@ -59,11 +59,23 @@ public class Taller {
             for (Map.Entry<String, Coche> entrada : coches.entrySet()) {
                 String matricula = entrada.getKey();
                 Coche coche = entrada.getValue();
-                System.out.println(entrada.getKey() + " → " + coche);
+                System.out.println(entrada.getKey() + " = " + coche);
 
             }
         }
 
+        // Otra opcion a parte del entry.
+
+//    public void verTallerCoches() {
+//            for(String matricula : coches.keySet()) {
+//                System.out.println(matricula + " → " + coches.get(matricula));
+//            }
+//    }
+
+
+    public void verNumeroElementos () {
+            System.out.println("Hay " + coches.size() + " coches");
+    }
 
 
 

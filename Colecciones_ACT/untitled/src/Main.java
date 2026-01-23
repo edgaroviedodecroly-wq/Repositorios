@@ -27,12 +27,17 @@ void main() {
                 taller.verTaller();
                 break;
             case "5":
+                taller.verNumeroElementos();
+                break;
+            case "6":
+                taller.verNumeroElementos();
+                taller.verMatricula();
                 break;
             default:
                 System.out.println("Por favor introduzca una opcion correcta.");
         }
 
-    }while(!opcion.equals("5"));
+    }while(!opcion.equals("6"));
 
 }
 
@@ -44,7 +49,8 @@ void main() {
             System.out.println("2. Eliminar coche del taller.");
             System.out.println("3. Ver Lista coches.");
             System.out.println("4. Ver coches del taller.");
-            System.out.println("5. Salir del taller.");
+            System.out.println("5. Ver numero elementos del taller.");
+            System.out.println("6. Salir del taller.");
 
             sc = new Scanner(System.in);
             opcion = sc.nextLine();
