@@ -65,6 +65,17 @@ public class Main {
         }
     }
 
+        // Ejercicio 4
+        ImprimirNegativo nega = new ImprimirNegativo();
+        ImprimirPositivo imprimirPositivo = new ImprimirPositivo();
+
+        try {
+            ImprimirNegativo.nega(p);
+
+
+        } catch ()
+
+
 
     }
 }
