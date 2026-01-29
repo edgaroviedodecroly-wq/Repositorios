@@ -1,17 +1,20 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class CuentaBancaria {
     private String iban;
-    private String titular;
+    private String cliente;
     private double saldo;
-    private Movimiento[] movimientos;
+    private HashMap<String, ArrayList<Movimiento>> movimientos;
     private int numMovimientos;
 
     private static final double LIMITE_DESCUBIERTO = -50.0;
 
     public CuentaBancaria(String iban, String titular){
         this.iban = iban;
-        this.titular = titular;
+        this.cliente = titular;
         this.saldo = 0;
-        this.movimientos = new Movimiento[100];
+        this.movimientos = new HashMap<>();
         this.numMovimientos = 0;
 
 
@@ -21,15 +24,15 @@ public class CuentaBancaria {
         return iban;
     }
 
-    public String getTitular() {
-        return titular;
+    public String getCliente() {
+        return cliente;
     }
 
     public double getSaldo() {
         return saldo;
     }
 
-    public Movimiento[] getMovimientos() {
+    public HashMap<String, ArrayList<Movimiento>> getMovimientos() {
         return movimientos;
     }
 
@@ -54,7 +57,9 @@ public class CuentaBancaria {
         Movimiento mov = new Movimiento(numMovimientos + 1, "Ingreso", cantidad);
 
         //Inserto el movimiento en el array
-        movimientos[numMovimientos] = mov;
+//        movimientos[numMovimientos] = mov;
+        movimientos.putIfAbsent(iban, new ArrayList<>());
+        movimientos.get(iban).add(mov);
 
         // le sumo uno para que en los siguientes insertos se ponga en la siguiente posicion.
         numMovimientos++;
@@ -93,8 +98,9 @@ public class CuentaBancaria {
 
         // creo el objeto movimiento y lo guardo en el array y le sumo uno para futuros registros.
         Movimiento mov = new Movimiento(numMovimientos + 1, "retirada", cantidad);
-        movimientos[numMovimientos] = mov;
-        numMovimientos++;
+        movimientos.putIfAbsent(iban, new ArrayList<>());
+        movimientos.get(iban).add(mov);
+
 
         return true;
     }
@@ -102,7 +108,7 @@ public class CuentaBancaria {
     public String mostrarDatos(){
         String datos = "";
         datos += "Iban: " + this.iban + "\n";
-        datos += "Titular: " + this.titular + "\n";
+        datos += "Titular: " + this.cliente + "\n";
         datos += "Saldo: " + this.saldo + "€\n";;
 
         return datos;

@@ -1,5 +1,5 @@
-import java.time.LocalDate;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -42,7 +42,6 @@ public class Main {
         do{
             System.out.println(imprimiMenuOpciones());
             opcion = sc.nextLine();
-            sc.nextLine();
 
             switch(opcion){
                 case "1":
@@ -52,7 +51,7 @@ public class Main {
                     System.out.print(cuenta.getIban());
                     break;
                 case "3":
-                    System.out.print(cuenta.getTitular());
+                    System.out.print(cuenta.getCliente());
                     break;
                 case "4":
                     System.out.print(cuenta.getSaldo());
@@ -78,15 +77,19 @@ public class Main {
     }
 
     private static void Movimiento(CuentaBancaria cuenta) {
-        Movimiento[] listaMovimiento = cuenta.getMovimientos();
+        HashMap<String, ArrayList<Movimiento>> listaMovimiento = cuenta.getMovimientos();
         int n = cuenta.NumMovimientos();
 
         if (n == 0) {
             System.out.println("No hay movimientos registrados.");
         } else {
-            for (int i = 0; i < n; i++) {
-                System.out.println(listaMovimiento[i].mostrarInfoMovimiento());
+
+            for (String key : listaMovimiento.keySet()) {
+                System.out.println(listaMovimiento.toString());
             }
+//            for (int i = 0; i < n; i++) {
+//                System.out.println(listaMovimiento[i].toString());
+//            }
         }
     }
 
