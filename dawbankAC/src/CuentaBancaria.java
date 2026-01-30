@@ -10,9 +10,9 @@ public class CuentaBancaria {
 
     private static final double LIMITE_DESCUBIERTO = -50.0;
 
-    public CuentaBancaria(String iban, String titular){
+    public CuentaBancaria(String iban, String cliente){
         this.iban = iban;
-        this.cliente = titular;
+        this.cliente = cliente;
         this.saldo = 0;
         this.movimientos = new HashMap<>();
         this.numMovimientos = 0;
@@ -39,18 +39,17 @@ public class CuentaBancaria {
 
     // Metodo para ingresos, hago un if para validar la cantidad minima y otro para la maxima.
 
-    public boolean ingreso(double cantidad) {
+    public boolean ingreso(double cantidad) throws AvisarHaciendaException{
 
         if (cantidad <= 0){
-            System.out.println("Cantidad Invalida");
-            return false;
+            throw new IllegalArgumentException("Cantidad Invalida");
         }
 
         //Saldo se suma a cantidad.
         saldo += cantidad;
 
         if(cantidad > 3000) {
-            System.out.println("AVISO: Notificar Hacienda.");
+            throw new AvisarHaciendaException("AVISO: Notificar Hacienda.");
         }
 
         // Creo un objeto Movimiento sumandole 1 a numMovimiento y indicando tipo, cantidad.
@@ -70,17 +69,15 @@ public class CuentaBancaria {
 
     // Metodo para retirada
 
-    public boolean retirada(double cantidad) {
+    public boolean retirada(double cantidad) throws AvisarHaciendaException  {
 
         //  if para cantidad invalidad.
         if (cantidad <= 0) {
-            System.out.println("Cantidad Invalida");
-            return false;
+            throw new IllegalArgumentException("Cantidad Invalida");
         }
         // If si saldo - catidad es menor a limite_descubierto. entonces no permite retirar.
         if (saldo - cantidad < LIMITE_DESCUBIERTO) {
-            System.out.println("No puedes retirar esa cantidad, Saldo Insuficiente.");
-            return false;
+            throw new IllegalStateException("No puedes retirar esa cantidad, Saldo Insuficiente.");
         }
 
         // Se descuenta la retirada de la cantida.
@@ -93,7 +90,7 @@ public class CuentaBancaria {
 
         // Si se retira mas de 3000, aviso a hacienda.
         if  (cantidad > 3000) {
-            System.out.println("AVISO: Notificar Hacienda.");
+                throw new AvisarHaciendaException("AVISO: Notificar Hacienda.");
         }
 
         // creo el objeto movimiento y lo guardo en el array y le sumo uno para futuros registros.
@@ -104,6 +101,19 @@ public class CuentaBancaria {
 
         return true;
     }
+
+    public static void validarIban(String iban) throws IbanInvalidoException {
+        if (!iban.matches("^[A-Z]{2}[0-9]{22}$")) {
+            throw new IbanInvalidoException("ERROR: Introduce un IBAN correcto.");
+        }
+    }
+
+    public static void validarNombre(String cliente) throws NombreInvalido {
+        if (!cliente.matches("^[A-Za-z]{3,}$")) {
+            throw new NombreInvalido("ERROR: El campo de titular tiene que estar completado.");
+        }
+    }
+
 
     public String mostrarDatos(){
         String datos = "";

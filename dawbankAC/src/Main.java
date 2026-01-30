@@ -8,32 +8,38 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.print("Bienvenido a DawBank" + "\n");
         String iban = "";
-        String titular = "";
+        String cliente = "";
 
         // Pido los datos y los paso por dos filtros, para evitar mala praxis.
 
         while(true) {
-            System.out.println("Introduzca Iban: ");
-            iban = sc.nextLine().toUpperCase();
+            try {
+                System.out.println("Introduzca Iban: ");
+                iban = sc.nextLine().toUpperCase();
 
-            if (iban.matches("^[A-Z]{2}[0-9]{22}$")) {
+                CuentaBancaria.validarIban(iban);
                 break;
-        }else {
-                System.out.println("ERROR: Introduce un IBAN correcto.");
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
 
-        while(titular.isEmpty()) {
-            System.out.println("Introduce nombre del titular: ");
-            titular = sc.nextLine().toUpperCase();
-            if (titular.isEmpty()) {
-                System.out.println("ERROR: El campo de titular tiene que estar completado.");
+        while(true) {
+            try {
+                System.out.println("Introduce nombre del titular: ");
+                cliente = sc.nextLine().toUpperCase();
+
+                CuentaBancaria.validarNombre(cliente);
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
 
         // Creo cuenta para cuando alguien se registre con iban y titular
 
-        CuentaBancaria cuenta = new CuentaBancaria(iban, titular);
+        CuentaBancaria cuenta = new CuentaBancaria(iban, cliente);
 
         // Creo el do-while con los  prints, seguido de los case.
 
@@ -98,10 +104,15 @@ public class Main {
         double cantidad = sc.nextDouble();
         sc.nextLine();
 
-        if (cuenta.ingreso(cantidad)) {
-            System.out.println("Ingreso realizado correctamente");
-        } else {
-            System.out.println("Ingreso realizado incorrectamente");
+//        if (cuenta.ingreso(cantidad)) {
+//            System.out.println("Ingreso realizado correctamente");
+//        } else {
+//            System.out.println("Ingreso realizado incorrectamente");
+//        }
+        try {
+            cuenta.ingreso(5000);
+        } catch (AvisarHaciendaException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -110,10 +121,16 @@ public class Main {
         double cantidadRetirada = sc.nextDouble();
         sc.nextLine();
 
-        if (cuenta.retirada(cantidadRetirada)) {
-            System.out.println("Retiro realizado correctamente");
-        } else {
-            System.out.println("El retiro no se realizo correctamente");
+//        if (cuenta.retirada(cantidadRetirada)) {
+//            System.out.println("Retiro realizado correctamente");
+//        } else {
+//            System.out.println("El retiro no se realizo correctamente");
+//        }
+
+        try {
+            cuenta.retirada(5000);
+        } catch (AvisarHaciendaException e) {
+            System.out.println(e.getMessage());
         }
     }
 
